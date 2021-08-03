@@ -9,10 +9,10 @@ const NavBarStyled = styled.header`
   left: 0;
   z-index: 999;
   height: 80px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  //align-items: center;
   padding: 15px;
   color: white;
   background-color: #299b01;
@@ -34,16 +34,16 @@ const ImgLogo = styled.img`
 
 const Login = styled.button`
   color: white;
+  font-size: 14px;
   background-color: transparent;
   border: none;
-  cursor: pointer;
 `;
 
 export const NavBar = () => (
   <NavBarStyled>
     <Logo>
       <ImgLogo src={logoImg} alt="Logo" />
-      <H1>MrDonald's®</H1>
+      <H1>MrDonald&apos;s&reg;</H1>
     </Logo>
     <Login>
       <img src={signImg} alt="Войти" />
