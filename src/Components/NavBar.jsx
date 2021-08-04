@@ -7,15 +7,14 @@ const NavBarStyled = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
-  height: 80px;
-  width: 100%;
   display: flex;
   justify-content: space-between;
-  //align-items: center;
-  padding: 15px;
   color: white;
   background-color: #299b01;
+  width: 100%;
+  height: 80px;
+  padding: 15px;
+  z-index: 100;
 `;
 
 const Logo = styled.div`
@@ -36,7 +35,7 @@ const Login = styled.button`
   color: white;
   font-size: 14px;
   background-color: transparent;
-  border: none;
+  border-style: none;
 `;
 
 export const NavBar = () => (
