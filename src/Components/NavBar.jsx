@@ -14,6 +14,7 @@ const NavBarStyled = styled.header`
   width: 100%;
   height: 80px;
   padding: 15px;
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
   z-index: 100;
 `;
 

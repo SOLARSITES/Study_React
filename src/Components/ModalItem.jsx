@@ -29,7 +29,7 @@ const Content = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - 310px);
+  height: calc(100% - 200px);
   padding: 30px;
 `;
 
@@ -69,8 +69,8 @@ export const ModalItem = ({ openItem, setOpenItem }) => {
               {openItem.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' })}
             </div>
           </HeaderContent>
+          <ButtonCheckout>Добавить</ButtonCheckout>
         </Content>
-        <ButtonCheckout>Добавить</ButtonCheckout>
       </Modal>
     </Overlay>
   );

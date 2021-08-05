@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  //justify-content: space-around;
+  justify-content: space-around;
 `;
 
 const Item = styled.li`
