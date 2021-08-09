@@ -1,4 +1,4 @@
-import { GlobalStyle } from './Components/Style/GlobalStyle';
+import { GlobalStyle } from './Components/Styled/GlobalStyle';
 import { NavBar } from './Components/NavBar/NavBar';
 import { Menu } from './Components/Menu/Menu';
 import { ModalItem } from './Components/Modal/ModalItem';
