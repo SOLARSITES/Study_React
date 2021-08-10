@@ -11,7 +11,7 @@ const OrderStyled = styled.section`
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  min-width: 380px;
+  width: 380px;
   height: calc(100% - 80px);
   padding: 20px;
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
@@ -31,6 +31,7 @@ const OrderList = styled.ul``;
 
 const Total = styled.div`
   display: flex;
+  justify-content: flex-start;
   margin: 0 35px 30px;
   & span:first-child {
     flex-grow: 1;
@@ -39,7 +40,7 @@ const Total = styled.div`
 
 const TotalPrice = styled.span`
   text-align: right;
-  min-width: 65px;
+  min-width: 107px;
   margin-left: 20px;
 `;
 
@@ -50,6 +51,8 @@ const EmptyList = styled.p`
 export const Order = ({ orders }) => {
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
 
+  const totalCounter = orders.reduce((result, order) => order.count + result, 0);
+
   return (
     <>
       <OrderStyled>
@@ -58,7 +61,7 @@ export const Order = ({ orders }) => {
           {orders.length ? (
             <OrderList>
               {orders.map((order) => (
-                <OrderListItem order={order} />
+                <OrderListItem key={order.id} order={order} />
               ))}
             </OrderList>
           ) : (
@@ -66,8 +69,8 @@ export const Order = ({ orders }) => {
           )}
         </OrderContent>
         <Total>
-          <span>Итого</span>
-          <span>5</span>
+          <span>Итого:</span>
+          <span>{totalCounter}</span>
           <TotalPrice>{formatCurrency(total)}</TotalPrice>
         </Total>
         <ButtonCheckout>Оформить</ButtonCheckout>
