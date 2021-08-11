@@ -1,3 +1,4 @@
+import React from 'react';
 import { GlobalStyle } from './Components/Styled/GlobalStyle';
 import { NavBar } from './Components/NavBar/NavBar';
 import { Menu } from './Components/Menu/Menu';

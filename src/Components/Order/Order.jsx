@@ -31,7 +31,6 @@ const OrderList = styled.ul``;
 
 const Total = styled.div`
   display: flex;
-  justify-content: flex-start;
   margin: 0 35px 30px;
   & span:first-child {
     flex-grow: 1;
@@ -48,10 +47,11 @@ const EmptyList = styled.p`
   text-align: center;
 `;
 
-export const Order = ({ orders }) => {
+export const Order = ({ orders, setOrders }) => {
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
-
   const totalCounter = orders.reduce((result, order) => order.count + result, 0);
+
+  const deleteItem = (order) => setOrders(orders.filter((item) => item !== order));
 
   return (
     <>
@@ -60,8 +60,8 @@ export const Order = ({ orders }) => {
         <OrderContent>
           {orders.length ? (
             <OrderList>
-              {orders.map((order) => (
-                <OrderListItem key={order.id} order={order} />
+              {orders.map((order, index) => (
+                <OrderListItem key={index} deleteItem={deleteItem} order={order} />
               ))}
             </OrderList>
           ) : (

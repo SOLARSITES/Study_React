@@ -23,4 +23,9 @@ export const ButtonCheckout = styled.button`
   &:focus {
     outline-style: none;
   }
+  &:disabled {
+    color: #777;
+    background-color: #ccc;
+    border-color: #aaa;
+  }
 `;
