@@ -47,11 +47,25 @@ const EmptyList = styled.p`
   text-align: center;
 `;
 
-export const Order = ({ orders, setOrders }) => {
+export const Order = ({ orders, setOrders, setOpenItem }) => {
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
   const totalCounter = orders.reduce((result, order) => order.count + result, 0);
 
-  const deleteItem = (order) => setOrders(orders.filter((item) => item !== order));
+  // const deleteItem = (order) => setOrders(orders.filter((item) => item !== order));
+
+  // Иммутабельный вариант функции deleteItem с применением метода filter()
+  const deleteItem = (index) => {
+    const newOrders = orders.filter((item, i) => index !== i);
+
+    setOrders(newOrders);
+  };
+
+  // Иммутабельный вариант функции deleteItem с применением метода splice()
+  // const deleteItem = (index) => {
+  //   const newOrders = [...orders];
+  //   newOrders.splice(index, 1);
+  //   setOrders(newOrders);
+  // };
 
   return (
     <>
@@ -61,7 +75,13 @@ export const Order = ({ orders, setOrders }) => {
           {orders.length ? (
             <OrderList>
               {orders.map((order, index) => (
-                <OrderListItem key={index} deleteItem={deleteItem} order={order} />
+                <OrderListItem
+                  key={index}
+                  index={index}
+                  order={order}
+                  deleteItem={deleteItem}
+                  setOpenItem={setOpenItem}
+                />
               ))}
             </OrderList>
           ) : (

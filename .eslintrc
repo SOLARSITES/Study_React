@@ -27,7 +27,12 @@
     "react/prop-types": 0,
     "indent": [
       "error",
-      2
+      2,
+      {
+        "ignoredNodes": [
+          "ConditionalExpression"
+        ]
+      }
     ],
     "linebreak-style": [
       "error",
@@ -155,7 +160,7 @@
     ],
     "operator-linebreak": [
       "error",
-      "after"
+      "before"
     ],
     "semi-spacing": [
       "error",

@@ -7,8 +7,14 @@ const getTopping = (toppings) =>
   }));
 
 export function useToppings(openItem) {
-  const readyToppings = openItem.toppings ? getTopping(openItem.toppings) : [];
-  // const readyToppings = (openItem.toppings && getTopping(openItem.toppings)) || []; // Вариант с условием И\ИЛИ
+  const readyToppings = openItem.topping
+    ? openItem.topping
+    : openItem.toppings
+    ? getTopping(openItem.toppings)
+    : [];
+
+  // Вариант с условием И\ИЛИ (до последнего редактирования переменной readyToppings)
+  // const readyToppings = (openItem.toppings && getTopping(openItem.toppings)) || [];
 
   const [toppings, setToppings] = useState(readyToppings);
 
