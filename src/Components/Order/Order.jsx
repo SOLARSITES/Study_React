@@ -47,7 +47,7 @@ const EmptyList = styled.p`
   text-align: center;
 `;
 
-export const Order = ({ orders, setOrders, setOpenItem }) => {
+export const Order = ({ orders, setOrders, setOpenItem, authentication, logIn }) => {
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
   const totalCounter = orders.reduce((result, order) => order.count + result, 0);
 
@@ -68,33 +68,36 @@ export const Order = ({ orders, setOrders, setOpenItem }) => {
   // };
 
   return (
-    <>
-      <OrderStyled>
-        <OrderTitle>Ваш заказ</OrderTitle>
-        <OrderContent>
-          {orders.length ? (
-            <OrderList>
-              {orders.map((order, index) => (
-                <OrderListItem
-                  key={index}
-                  index={index}
-                  order={order}
-                  deleteItem={deleteItem}
-                  setOpenItem={setOpenItem}
-                />
-              ))}
-            </OrderList>
-          ) : (
-            <EmptyList>Список заказов пуст</EmptyList>
-          )}
-        </OrderContent>
-        <Total>
-          <span>Итого:</span>
-          <span>{totalCounter}</span>
-          <TotalPrice>{formatCurrency(total)}</TotalPrice>
-        </Total>
-        <ButtonCheckout>Оформить</ButtonCheckout>
-      </OrderStyled>
-    </>
+    <OrderStyled>
+      <OrderTitle>Ваш заказ</OrderTitle>
+      <OrderContent>
+        {orders.length ? (
+          <OrderList>
+            {orders.map((order, index) => (
+              <OrderListItem
+                key={index}
+                index={index}
+                order={order}
+                deleteItem={deleteItem}
+                setOpenItem={setOpenItem}
+              />
+            ))}
+          </OrderList>
+        ) : (
+          <EmptyList>Список заказов пуст</EmptyList>
+        )}
+      </OrderContent>
+      <Total>
+        <span>Итого:</span>
+        <span>{totalCounter}</span>
+        <TotalPrice>{formatCurrency(total)}</TotalPrice>
+      </Total>
+      <ButtonCheckout
+        disabled={orders.length === 0}
+        onClick={authentication ? console.log(orders) : logIn()}
+      >
+        Оформить
+      </ButtonCheckout>
+    </OrderStyled>
   );
 };
