@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ListItem } from './ListItem';
 import { Banner } from './Banner';
-import { useFetch } from '../Hooks/useFetch';
+import { useFirebase } from '../Hooks/useFirebase';
 import loadImg from '../../image/load.svg';
 import errorImg from '../../image/error.png';
 
@@ -21,8 +21,8 @@ const ImageWrap = styled.div`
   padding: 25px 25px 250px 25px;
 `;
 
-export const Menu = ({ setOpenItem }) => {
-  const res = useFetch();
+export const Menu = ({ setOpenItem, firebaseDatabase }) => {
+  const res = useFirebase(firebaseDatabase);
   const dbMenu = res.response;
 
   return (

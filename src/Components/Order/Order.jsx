@@ -75,7 +75,7 @@ export const Order = ({
     const newOrder = orders.map(projection(rulesData));
 
     dataBase.ref('orders').push().set({
-      nameClient: authentication.displayName,
+      clientName: authentication.displayName,
       email: authentication.email,
       order: newOrder,
     });
