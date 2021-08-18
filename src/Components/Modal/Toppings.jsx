@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CheckoutStyleWrap, CheckoutStyleLabel, CheckoutStyleInput } from '../Styled/CheckoutStyle';
+import { ContextItem } from '../Functions/context';
 
-export function Toppings({ toppings, checkToppings }) {
+export const Toppings = () => {
+  const {
+    toppings: { toppings, checkToppings },
+  } = useContext(ContextItem);
+
   return (
     <>
       <h3>Добавки:</h3>
@@ -19,4 +24,4 @@ export function Toppings({ toppings, checkToppings }) {
       </CheckoutStyleWrap>
     </>
   );
-}
+};
