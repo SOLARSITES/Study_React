@@ -8,6 +8,18 @@ const CountWrapper = styled.div`
   align-items: center;
 `;
 
+const CountSpan = styled.span`
+  @media (max-width: 375px) {
+    display: none;
+  }
+`;
+
+const CountGroup = styled.div`
+  @media (max-width: 375px) {
+    margin: 7px auto 0;
+  }
+`;
+
 const CountInput = styled.input`
   font-size: 20px;
   text-align: center;
@@ -46,8 +58,8 @@ export const CountItem = () => {
 
   return (
     <CountWrapper>
-      <span>Количество:</span>
-      <div>
+      <CountSpan>Количество:</CountSpan>
+      <CountGroup>
         <ButtonCount disabled={count <= 1} onClick={() => setCount(count - 1)}>
           –
         </ButtonCount>
@@ -61,7 +73,7 @@ export const CountItem = () => {
         <ButtonCount disabled={count >= 99} onClick={() => setCount(count + 1)}>
           +
         </ButtonCount>
-      </div>
+      </CountGroup>
     </CountWrapper>
   );
 };

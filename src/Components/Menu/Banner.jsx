@@ -5,6 +5,9 @@ export const Banner = styled.div`
   width: 100%;
   height: 210px;
   background-image: url(${bannerImg});
-  background-size: cover;
   background-position: center center;
+  background-size: cover;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

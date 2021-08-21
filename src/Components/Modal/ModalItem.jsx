@@ -20,6 +20,15 @@ const Modal = styled.div`
   height: 600px;
   margin: auto 0;
   overflow: hidden;
+  @media (max-width: 768px) {
+    height: 380px;
+  }
+  @media (max-width: 576px) {
+    height: 365px;
+  }
+  @media (max-width: 320px) {
+    height: 360px;
+  }
 `;
 
 const Content = styled.section`
@@ -36,6 +45,9 @@ const HeaderContent = styled.div`
   font-family: 'Pacifico', cursive;
   font-size: 30px;
   font-weight: 400;
+  @media (max-width: 425px) {
+    font-size: 25px;
+  }
 `;
 
 const Banner = styled.div`
@@ -44,11 +56,17 @@ const Banner = styled.div`
   background-size: cover;
   width: 100%;
   height: 200px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const TotalPriceItem = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const ModalItem = () => {
@@ -107,10 +125,7 @@ export const ModalItem = () => {
             <span>Цена:</span>
             <span>{formatCurrency(totalPriceItems(order))}</span>
           </TotalPriceItem>
-          <ButtonCheckout
-            onClick={isEdit ? editOrder : addToOrder}
-            disabled={order.choices && !order.choice}
-          >
+          <ButtonCheckout onClick={isEdit ? editOrder : addToOrder} disabled={order.choices && !order.choice}>
             {isEdit ? 'Изменить' : 'Добавить'}
           </ButtonCheckout>
         </Content>

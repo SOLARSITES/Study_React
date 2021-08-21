@@ -30,7 +30,8 @@
       2,
       {
         "ignoredNodes": [
-          "ConditionalExpression"
+          "ConditionalExpression",
+          "TemplateLiteral *"
         ]
       }
     ],
@@ -120,7 +121,7 @@
     "max-len": [
       "error",
       {
-        "code": 120,
+        "code": 140,
         "ignoreUrls": true
       }
     ],
@@ -160,7 +161,12 @@
     ],
     "operator-linebreak": [
       "error",
-      "before"
+      "before",
+      {
+        "overrides": {
+          "=": "after"
+        }
+      }
     ],
     "semi-spacing": [
       "error",

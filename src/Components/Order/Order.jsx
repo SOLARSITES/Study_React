@@ -16,7 +16,14 @@ const OrderStyled = styled.section`
   width: 380px;
   height: calc(100% - 80px);
   padding: 20px;
-  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 0 5px rgba(0, 0, 0, 0.25);
+  @media (max-width: 768px) {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+  }
 `;
 
 const OrderContent = styled.div`

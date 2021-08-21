@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import styled from 'styled-components';
 import { GlobalStyle } from './Components/Styled/GlobalStyle';
 import { NavBar } from './Components/NavBar/NavBar';
 import { Menu } from './Components/Menu/Menu';
@@ -27,6 +28,13 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const Main = styled.main`
+  display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
 function App() {
   const auth = useAuth(firebase.auth);
   const openItem = useOpenItem();
@@ -36,13 +44,13 @@ function App() {
   useTitle(openItem.openItem);
 
   return (
-    <Context.Provider
-      value={{ auth, openItem, orders, orderConfirm, firebaseDatabase: firebase.database }}
-    >
+    <Context.Provider value={{ auth, openItem, orders, orderConfirm, firebaseDatabase: firebase.database }}>
       <GlobalStyle />
       <NavBar />
-      <Order />
-      <Menu />
+      <Main>
+        <Order />
+        <Menu />
+      </Main>
       {openItem.openItem && <ModalItem />}
       {orderConfirm.openOrderConfirm && <OrderConfirm />}
     </Context.Provider>

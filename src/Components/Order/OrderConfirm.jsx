@@ -5,17 +5,21 @@ import { ButtonCheckout } from '../Styled/ButtonCheckout';
 import { totalPriceItems, formatCurrency, projection } from '../Functions/secondaryFunction';
 import { Context } from '../Functions/context';
 
-const Modal = styled.div`
+const NarrowModal = styled.div`
   background-color: white;
   border-radius: 8px;
   margin: auto 0;
-  width: 600px;
+  width: 450px;
   padding: 30px;
 `;
 
 const Text = styled.h3`
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
+`;
+
+const ButtonConfirm = styled(ButtonCheckout)`
+  margin-top: 45px;
 `;
 
 const rulesData = {
@@ -59,31 +63,31 @@ export const OrderConfirm = () => {
 
   return (
     <Overlay id="confirm" onClick={closeModal}>
-      <Modal>
+      <NarrowModal>
         <OrderTitle>{authentication.displayName}</OrderTitle>
         {orders.length ? (
           <>
-            <Text>Осталось только подтвердить Ваш заказ!</Text>
+            <Text>Пожалуйста, подтвердите заказ!</Text>
             <Total>
               <span>Итого:</span>
               <TotalPrice>{formatCurrency(total)}</TotalPrice>
             </Total>
-            <ButtonCheckout
+            <ButtonConfirm
               onClick={() => {
                 sendOrder(dataBase, orders, authentication);
                 setOrders([]);
               }}
             >
               Подтвердить
-            </ButtonCheckout>
+            </ButtonConfirm>
           </>
         ) : (
           <>
             <Text>Благодарим Вас за заказ!</Text>
-            <ButtonCheckout onClick={() => setOpenOrderConfirm(false)}>Закрыть</ButtonCheckout>
+            <ButtonConfirm onClick={() => setOpenOrderConfirm(false)}>Закрыть</ButtonConfirm>
           </>
         )}
-      </Modal>
+      </NarrowModal>
     </Overlay>
   );
 };

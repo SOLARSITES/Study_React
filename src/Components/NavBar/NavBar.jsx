@@ -15,7 +15,7 @@ const NavBarStyled = styled.header`
   width: 100%;
   height: 80px;
   padding: 15px;
-  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
   z-index: 100;
 `;
 
@@ -25,12 +25,24 @@ const Logo = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-size: 24px;
+  font-size: 28px;
   margin-left: 15px;
+  @media (max-width: 425px) {
+    font-size: 22px;
+  }
+  @media (max-width: 375px) {
+    display: none;
+  }
 `;
 
 const ImgLogo = styled.img`
-  width: 50px;
+  width: 55px;
+  @media (max-width: 425px) {
+    width: 50px;
+  }
+  @media (max-width: 240px) {
+    display: none;
+  }
 `;
 
 const Login = styled.button`
@@ -46,18 +58,27 @@ const User = styled.div`
   text-align: center;
 `;
 
-const Logout = styled.span`
-  color: white;
-  font-size: 22px;
-  font-weight: 700;
-  margin: 0 -2px 0 11px;
-  cursor: pointer;
-`;
-
 const Figure = styled.figure`
   color: white;
   font-size: 14px;
   margin: 0;
+`;
+
+const LoginImg = styled.img`
+  width: 32px;
+  height: 32px;
+  @media (max-width: 425px) {
+    width: 26px;
+    height: 26px;
+  }
+`;
+
+const Logout = styled.span`
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 2px 0 15px;
+  cursor: pointer;
 `;
 
 export const NavBar = () => {
@@ -69,12 +90,12 @@ export const NavBar = () => {
     <NavBarStyled>
       <Logo>
         <ImgLogo src={logoImg} alt="Logo" />
-        <H1>MrDonald&apos;s&reg;</H1>
+        <H1>MrDonaldz&reg;</H1>
       </Logo>
       {authentication ? (
         <User>
           <Figure>
-            <img src={signImg} alt={authentication.displayName} />
+            <LoginImg src={signImg} alt={authentication.displayName} />
             <figcaption>{authentication.displayName}</figcaption>
           </Figure>
           <Logout title="Выйти" onClick={logOut}>
@@ -84,7 +105,7 @@ export const NavBar = () => {
       ) : (
         <Login onClick={logIn}>
           <Figure>
-            <img src={signImg} alt="Войти" />
+            <LoginImg src={signImg} alt="Войти" />
             <figcaption>Войти</figcaption>
           </Figure>
         </Login>
