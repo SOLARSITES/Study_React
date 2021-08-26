@@ -22,20 +22,41 @@ export const OrderTitle = styled.h2`
   margin-bottom: 30px;
   @media (max-width: 768px) {
     line-height: 35px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+  }
+  @media (max-width: 425px) {
+    font-size: 27px;
   }
 `;
 
 export const Total = styled.div`
+  font-size: 20px;
   display: flex;
-  margin: 0 35px 30px;
+  margin: 15px 35px 30px;
   & span:first-child {
     flex-grow: 1;
+  }
+  @media (max-width: 768px) {
+    margin: 25px 35px 30px;
+  }
+  @media (max-width: 425px) {
+    font-size: 19px;
+  }
+  @media (max-width: 320px) {
+    font-size: 17px;
   }
 `;
 
 export const TotalPrice = styled.span`
+  font-size: 20px;
   text-align: right;
   min-width: 107px;
   margin-left: 20px;
+  @media (max-width: 425px) {
+    font-size: 19px;
+  }
+  @media (max-width: 320px) {
+    font-size: 17px;
+    min-width: 87px;
+  }
 `;

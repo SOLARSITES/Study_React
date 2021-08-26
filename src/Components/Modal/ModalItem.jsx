@@ -12,7 +12,6 @@ import { useChoices } from '../Hooks/useChoices';
 import { Context, ContextItem } from '../Functions/context';
 
 const Modal = styled.div`
-  position: relative;
   background-color: #fff;
   border: 1px solid #008000;
   border-radius: 8px;
@@ -21,13 +20,10 @@ const Modal = styled.div`
   margin: auto 0;
   overflow: hidden;
   @media (max-width: 768px) {
-    height: 380px;
-  }
-  @media (max-width: 576px) {
-    height: 365px;
+    height: 375px;
   }
   @media (max-width: 320px) {
-    height: 360px;
+    height: 365px;
   }
 `;
 
@@ -36,7 +32,14 @@ const Content = styled.section`
   flex-direction: column;
   justify-content: space-between;
   height: calc(100% - 200px);
-  padding: 30px;
+  padding: 30px 30px 28px;
+  @media (max-width: 768px) {
+    height: 100%;
+    padding: 17px 30px 24px;
+  }
+  @media (max-width: 375px) {
+    padding: 17px 17px 24px;
+  }
 `;
 
 const HeaderContent = styled.div`
@@ -64,7 +67,9 @@ const Banner = styled.div`
 const TotalPriceItem = styled.div`
   display: flex;
   justify-content: space-between;
+  font-size: 20px;
   @media (max-width: 768px) {
+    font-size: 19px;
     margin-bottom: 10px;
   }
 `;

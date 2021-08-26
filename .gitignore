@@ -23,6 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 /.idea
-/functions/config.js
-config.js
+/src/Components/firebaseConfig.js
+firebaseConfig.js
+/functions/functionsConfig.js
+functionsConfig.js
 package-lock.json

@@ -20,6 +20,9 @@ const ItemPrice = styled.span`
   min-width: 107px;
   margin-left: 20px;
   margin-right: 10px;
+  @media (max-width: 320px) {
+    min-width: 87px;
+  }
 `;
 
 const TrashButton = styled.button`
@@ -37,12 +40,18 @@ const Toppings = styled.div`
   color: #8b8b8b;
   font-size: 15px;
   width: 100%;
+  @media (max-width: 425px) {
+    font-size: 14px;
+  }
 `;
 
 const Choices = styled.div`
   color: #8b8b8b;
   font-size: 16px;
   width: 100%;
+  @media (max-width: 425px) {
+    font-size: 15px;
+  }
 `;
 
 export const OrderListItem = ({ order, index, deleteItem }) => {
@@ -60,9 +69,7 @@ export const OrderListItem = ({ order, index, deleteItem }) => {
   const refDeleteButton = useRef(null);
 
   return (
-    <OrderItemStyled
-      onClick={(e) => e.target !== refDeleteButton.current && setOpenItem({ ...order, index })}
-    >
+    <OrderItemStyled onClick={(e) => e.target !== refDeleteButton.current && setOpenItem({ ...order, index })}>
       <ItemName>{order.name}</ItemName>
       <span>{order.count}</span>
       <ItemPrice>{formatCurrency(totalPriceItems(order))}</ItemPrice>

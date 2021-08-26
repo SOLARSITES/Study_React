@@ -15,7 +15,7 @@ const Item = styled.li`
   font-size: 30px;
   background-image: ${({ img }) => `url(${img})`};
   background-size: cover;
-  background-position: center center;  
+  background-position: center center;
   width: 400px;
   height: 155px;
   margin-top: 30px;
@@ -25,7 +25,7 @@ const Item = styled.li`
   overflow: hidden;
   z-index: 1;
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -43,6 +43,29 @@ const Item = styled.li`
       opacity: 0;
     }
   }
+  @media (max-width: 768px) {
+    width: 320px;
+  }
+  @media (max-width: 735px) {
+    width: 300px;
+  }
+  @media (max-width: 700px) {
+    width: 280px;
+  }
+  @media (max-width: 670px) {
+    width: 260px;
+  }
+  @media (max-width: 640px) {
+    width: 250px;
+  }
+  @media (max-width: 610px) {
+    width: 240px;
+  }
+  @media (max-width: 576px) {
+    width: 400px;
+  }
+  @media (max-width: 425px) {
+    font-size: 28px;
   }
 `;
 

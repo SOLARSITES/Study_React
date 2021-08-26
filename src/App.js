@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import { firebaseConfig } from './Components/firebaseConfig';
 import styled from 'styled-components';
 import { GlobalStyle } from './Components/Styled/GlobalStyle';
 import { NavBar } from './Components/NavBar/NavBar';
@@ -16,18 +17,6 @@ import { OrderConfirm } from './Components/Order/OrderConfirm';
 import { useOrderConfirm } from './Components/Hooks/useOrderConfirm';
 import { Context } from './Components/Functions/context';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyC1d_eZtHvByPGb7hZ0K30AvGfhKSPKydQ',
-  authDomain: 'mrdonaldz.firebaseapp.com',
-  databaseURL: 'https://mrdonaldz-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'mrdonaldz',
-  storageBucket: 'mrdonaldz.appspot.com',
-  messagingSenderId: '964759099369',
-  appId: '1:964759099369:web:1c5f24db1dd58a61cd5d78',
-};
-
-firebase.initializeApp(firebaseConfig);
-
 const Main = styled.main`
   display: flex;
   @media (max-width: 768px) {
@@ -35,7 +24,7 @@ const Main = styled.main`
   }
 `;
 
-function App() {
+const App = () => {
   const auth = useAuth(firebase.auth);
   const openItem = useOpenItem();
   const orders = useOrders();
@@ -55,6 +44,8 @@ function App() {
       {orderConfirm.openOrderConfirm && <OrderConfirm />}
     </Context.Provider>
   );
-}
+};
+
+firebase.initializeApp(firebaseConfig);
 
 export default App;

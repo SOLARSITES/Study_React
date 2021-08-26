@@ -19,13 +19,7 @@ const MenuStyled = styled.section`
 `;
 
 const SectionMenu = styled.div`
-  padding: 30px;
-  @media (max-width: 425px) {
-    padding: 30px 13px 30px 40px;
-  }
-  @media (max-width: 425px) {
-    padding: 30px 0 30px 27px;
-  }
+  padding: 30px 0 30px 30px;
 `;
 
 const MenuTitle = styled.h2`

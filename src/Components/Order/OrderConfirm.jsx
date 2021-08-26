@@ -10,16 +10,60 @@ const NarrowModal = styled.div`
   border-radius: 8px;
   margin: auto 0;
   width: 450px;
-  padding: 30px;
+  padding: 30px 30px 27px;
 `;
 
-const Text = styled.h3`
+const OrderTitleConfirm = styled(OrderTitle)`
+  font-size: 35px;
+  text-transform: none;
+  @media (max-width: 320px) {
+    font-size: 32px;
+  }
+`;
+
+const TextConfirm = styled.h3`
   text-align: center;
   margin-bottom: 35px;
+  @media (max-width: 768px) {
+    margin-top: 43px;
+  }
+  @media (max-width: 320px) {
+    font-size: 22px;
+    line-height: 32px;
+    margin-top: 30px;
+    margin-bottom: 27px;
+  }
+`;
+
+const TextThanks = styled(TextConfirm)`
+  margin-top: -5px;
+  @media (max-width: 768px) {
+    margin-top: 39px;
+  }
+  @media (max-width: 320px) {
+    font-size: 22px;
+    margin-top: 30px;
+  }
 `;
 
 const ButtonConfirm = styled(ButtonCheckout)`
-  margin-top: 45px;
+  margin-top: 40px;
+  @media (max-width: 425px) {
+    font-size: 19px;
+    width: 200px;
+    height: 52px;
+    padding: 10px 0 10px;
+  }
+  @media (max-width: 320px) {
+    margin-top: 32px;
+  }
+`;
+
+const ButtonThanks = styled(ButtonCheckout)`
+  margin-top: 50px;
+  @media (max-width: 320px) {
+    margin-top: 44px;
+  }
 `;
 
 const rulesData = {
@@ -64,10 +108,10 @@ export const OrderConfirm = () => {
   return (
     <Overlay id="confirm" onClick={closeModal}>
       <NarrowModal>
-        <OrderTitle>{authentication.displayName}</OrderTitle>
+        <OrderTitleConfirm>{authentication.displayName},</OrderTitleConfirm>
         {orders.length ? (
           <>
-            <Text>Пожалуйста, подтвердите заказ!</Text>
+            <TextConfirm>Пожалуйста, подтвердите заказ!</TextConfirm>
             <Total>
               <span>Итого:</span>
               <TotalPrice>{formatCurrency(total)}</TotalPrice>
@@ -83,8 +127,8 @@ export const OrderConfirm = () => {
           </>
         ) : (
           <>
-            <Text>Благодарим Вас за заказ!</Text>
-            <ButtonConfirm onClick={() => setOpenOrderConfirm(false)}>Закрыть</ButtonConfirm>
+            <TextThanks>Благодарим Вас за заказ!</TextThanks>
+            <ButtonThanks onClick={() => setOpenOrderConfirm(false)}>Закрыть</ButtonThanks>
           </>
         )}
       </NarrowModal>

@@ -17,12 +17,20 @@ const OrderStyled = styled.section`
   height: calc(100% - 80px);
   padding: 20px;
   box-shadow: 5px 0 5px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
   @media (max-width: 768px) {
     display: table;
     position: relative;
     width: 100%;
     height: fit-content;
+    padding: 32px 38px 32px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+  }
+  @media (max-width: 425px) {
+    padding: 29px 30px 29px;
+  }
+  @media (max-width: 320px) {
+    padding: 29px 15px 29px;
   }
 `;
 
@@ -30,10 +38,21 @@ const OrderContent = styled.div`
   flex-grow: 1;
 `;
 
-const OrderList = styled.ul``;
+const OrderList = styled.ul`
+  font-size: 20px;
+  @media (max-width: 425px) {
+    font-size: 19px;
+  }
+  @media (max-width: 320px) {
+    font-size: 17px;
+  }
+`;
 
 const EmptyList = styled.p`
   text-align: center;
+  @media (max-width: 425px) {
+    font-size: 17px;
+  }
 `;
 
 export const Order = () => {

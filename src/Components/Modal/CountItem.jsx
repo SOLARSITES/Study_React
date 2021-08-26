@@ -8,15 +8,19 @@ const CountWrapper = styled.div`
   align-items: center;
 `;
 
-const CountSpan = styled.span`
+const CountTitle = styled.span`
+  font-size: 20px;
+  @media (max-width: 425px) {
+    font-size: 19px;
+  }
   @media (max-width: 375px) {
-    display: none;
+    //display: none;
   }
 `;
 
 const CountGroup = styled.div`
   @media (max-width: 375px) {
-    margin: 7px auto 0;
+    //margin: 7px auto 0;
   }
 `;
 
@@ -26,6 +30,9 @@ const CountInput = styled.input`
   background-color: transparent;
   border: none;
   width: 37px;
+  @media (max-width: 425px) {
+    font-size: 19px;
+  }
 `;
 
 const ButtonCount = styled.button`
@@ -49,6 +56,10 @@ const ButtonCount = styled.button`
   &:focus {
     outline-style: none;
   }
+  @media (max-width: 425px) {
+    width: 29px;
+    height: 29px;
+  }
 `;
 
 export const CountItem = () => {
@@ -58,7 +69,7 @@ export const CountItem = () => {
 
   return (
     <CountWrapper>
-      <CountSpan>Количество:</CountSpan>
+      <CountTitle>Количество:</CountTitle>
       <CountGroup>
         <ButtonCount disabled={count <= 1} onClick={() => setCount(count - 1)}>
           –
