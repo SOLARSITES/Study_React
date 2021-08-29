@@ -2,17 +2,20 @@ import styled from 'styled-components';
 
 export const Overlay = styled.div`
   position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 20;
-  @media (max-width: 768px) {
-    top: 40px;
+  z-index: 99;
+  animation: modal-overlay 0.6s alternate ease-in-out;
+  @keyframes modal-overlay {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `;
 
@@ -42,7 +45,10 @@ export const Total = styled.div`
   @media (max-width: 425px) {
     font-size: 19px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 385px) {
+    font-size: 18px;
+  }
+  @media (max-width: 375px) {
     font-size: 17px;
   }
 `;
@@ -55,7 +61,10 @@ export const TotalPrice = styled.span`
   @media (max-width: 425px) {
     font-size: 19px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 385px) {
+    font-size: 18px;
+  }
+  @media (max-width: 375px) {
     font-size: 17px;
     min-width: 87px;
   }

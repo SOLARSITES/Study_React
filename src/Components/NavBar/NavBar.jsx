@@ -17,6 +17,10 @@ const NavBarStyled = styled.header`
   padding: 15px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
   z-index: 100;
+  @media (max-width: 275px) {
+    justify-content: center;
+    padding: 0 0 0 22px;
+  }
 `;
 
 const Logo = styled.div`
@@ -27,20 +31,20 @@ const Logo = styled.div`
 const H1 = styled.h1`
   font-size: 28px;
   margin-left: 15px;
-  @media (max-width: 425px) {
+  @media (max-width: 576px) {
     font-size: 22px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 425px) {
     display: none;
   }
 `;
 
 const ImgLogo = styled.img`
   width: 55px;
-  @media (max-width: 425px) {
+  @media (max-width: 576px) {
     width: 50px;
   }
-  @media (max-width: 240px) {
+  @media (max-width: 275px) {
     display: none;
   }
 `;
@@ -67,7 +71,7 @@ const Figure = styled.figure`
 const LoginImg = styled.img`
   width: 32px;
   height: 32px;
-  @media (max-width: 425px) {
+  @media (max-width: 576px) {
     width: 26px;
     height: 26px;
   }

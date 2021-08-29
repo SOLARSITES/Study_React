@@ -14,13 +14,6 @@ export const ButtonCheckout = styled.button`
   height: 65px;
   margin: 0 auto;
   padding: 18px 0 17px;
-  transition-property: color, background-color, border-color;
-  transition-duration: 0.3s;
-  &:hover {
-    color: #299b01;
-    background-color: white;
-    border-color: #299b01;
-  }
   &:focus {
     outline-style: none;
   }
@@ -28,6 +21,15 @@ export const ButtonCheckout = styled.button`
     color: #777;
     background-color: #ccc;
     border-color: #aaa;
+  }
+  @media (min-width: 769px) {
+    transition-property: color, background-color, border-color;
+    transition-duration: 0.3s;
+    &:hover {
+      color: #299b01;
+      background-color: white;
+      border-color: #299b01;
+    }
   }
   @media (max-width: 576px) {
     width: 230px;

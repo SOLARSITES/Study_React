@@ -27,6 +27,15 @@ const MenuTitle = styled.h2`
   @media (max-width: 425px) {
     font-size: 30px;
   }
+  @media (max-width: 320px) {
+    font-size: 29px;
+  }
+  @media (max-width: 315px) {
+    font-size: 25px;
+  }
+  @media (max-width: 275px) {
+    font-size: 23px;
+  }
 `;
 
 const LoadStatus = styled.div`
@@ -48,7 +57,7 @@ export const Menu = () => {
             <ListItem itemList={dbMenu.burger} />
           </SectionMenu>
           <SectionMenu>
-            <MenuTitle>Закуски / Напитки</MenuTitle>
+            <MenuTitle>Напитки / Закуски</MenuTitle>
             <ListItem itemList={dbMenu.other} />
           </SectionMenu>
         </>

@@ -12,18 +12,59 @@ import { useChoices } from '../Hooks/useChoices';
 import { Context, ContextItem } from '../Functions/context';
 
 const Modal = styled.div`
-  background-color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
   border: 1px solid #008000;
   border-radius: 8px;
   width: 600px;
   height: 600px;
-  margin: auto 0;
   overflow: hidden;
-  @media (max-width: 768px) {
-    height: 375px;
+  z-index: 100;
+  animation: modal 0.6s alternate ease-in-out;
+  @keyframes modal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
-  @media (max-width: 320px) {
-    height: 365px;
+  @media (max-width: 768px) {
+    height: 100%;
+    max-height: 375px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    &::-webkit-scrollbar-button {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-track-piece {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      height: 0;
+      background-color: transparent;
+      border-radius: 0;
+    }
+    &::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+    &::-webkit-resizer {
+      background-color: transparent;
+    }
+  }
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `;
 
@@ -34,7 +75,7 @@ const Content = styled.section`
   height: calc(100% - 200px);
   padding: 30px 30px 28px;
   @media (max-width: 768px) {
-    height: 100%;
+    height: 375px;
     padding: 17px 30px 24px;
   }
   @media (max-width: 375px) {
@@ -113,7 +154,8 @@ export const ModalItem = () => {
   };
 
   return (
-    <Overlay id="overlay" onClick={closeModal}>
+    <>
+      <Overlay id="overlay" onClick={closeModal} />
       <Modal>
         <Banner img={openItem.img} />
         <Content>
@@ -135,6 +177,6 @@ export const ModalItem = () => {
           </ButtonCheckout>
         </Content>
       </Modal>
-    </Overlay>
+    </>
   );
 };

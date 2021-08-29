@@ -29,7 +29,10 @@ const OrderStyled = styled.section`
   @media (max-width: 425px) {
     padding: 29px 30px 29px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 385px) {
+    padding: 29px 20px 29px;
+  }
+  @media (max-width: 375px) {
     padding: 29px 15px 29px;
   }
 `;
@@ -43,7 +46,10 @@ const OrderList = styled.ul`
   @media (max-width: 425px) {
     font-size: 19px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 385px) {
+    font-size: 18px;
+  }
+  @media (max-width: 375px) {
     font-size: 17px;
   }
 `;

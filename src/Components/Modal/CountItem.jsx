@@ -46,15 +46,17 @@ const ButtonCount = styled.button`
   width: 30px;
   height: 30px;
   padding: 0;
-  transition-property: color, background-color, border-color;
-  transition-duration: 0.3s;
-  &:hover {
-    color: #299b01;
-    background-color: white;
-    border-color: #299b01;
-  }
   &:focus {
     outline-style: none;
+  }
+  @media (min-width: 769px) {
+    transition-property: color, background-color, border-color;
+    transition-duration: 0.3s;
+    &:hover {
+      color: #299b01;
+      background-color: white;
+      border-color: #299b01;
+    }
   }
   @media (max-width: 425px) {
     width: 29px;

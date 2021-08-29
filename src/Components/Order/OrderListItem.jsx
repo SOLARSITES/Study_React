@@ -20,7 +20,7 @@ const ItemPrice = styled.span`
   min-width: 107px;
   margin-left: 20px;
   margin-right: 10px;
-  @media (max-width: 320px) {
+  @media (max-width: 375px) {
     min-width: 87px;
   }
 `;

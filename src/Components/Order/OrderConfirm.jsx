@@ -6,63 +6,147 @@ import { totalPriceItems, formatCurrency, projection } from '../Functions/second
 import { Context } from '../Functions/context';
 
 const NarrowModal = styled.div`
-  background-color: white;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border: 1px solid #008000;
   border-radius: 8px;
-  margin: auto 0;
   width: 450px;
-  padding: 30px 30px 27px;
+  height: 310px;
+  z-index: 100;
+  animation: modal 0.6s alternate ease-in-out;
+  @keyframes modal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @media (max-width: 768px) {
+    height: 100%;
+    max-height: 310px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    &::-webkit-scrollbar-button {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-track-piece {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      height: 0;
+      background-color: transparent;
+      border-radius: 0;
+    }
+    &::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+    &::-webkit-resizer {
+      background-color: transparent;
+    }
+  }
+  @media (max-width: 450px) {
+    width: 100%;
+  }
+`;
+
+const Content = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 310px;
+  padding: 20px 30px 24px;
+  @media (max-width: 768px) {
+    padding: 30px 30px 24px;
+  }
+  @media (max-width: 425px) {
+    padding: 30px 22px 24px;
+  }
+  @media (max-width: 410px) {
+    padding: 25px 22px 24px;
+  }
+  @media (max-width: 375px) {
+    padding: 25px 17px 24px;
+  }
 `;
 
 const OrderTitleConfirm = styled(OrderTitle)`
+  line-height: 54px;
   font-size: 35px;
   text-transform: none;
-  @media (max-width: 320px) {
+  @media (max-width: 768px) {
+    line-height: 35px;
+  }
+  @media (max-width: 375px) {
     font-size: 32px;
+  }
+  @media (max-width: 275px) {
+    font-size: 30px;
   }
 `;
 
 const TextConfirm = styled.h3`
   text-align: center;
-  margin-bottom: 35px;
+  margin-top: -10px;
+  margin-bottom: 15px;
   @media (max-width: 768px) {
-    margin-top: 43px;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 576px) {
+    margin-top: 2px;
+  }
+  @media (max-width: 410px) {
+    line-height: 35px;
+  }
+  @media (max-width: 375px) {
     font-size: 22px;
     line-height: 32px;
-    margin-top: 30px;
-    margin-bottom: 27px;
+  }
+  @media (max-width: 275px) {
+    font-size: 20px;
+    line-height: 30px;
   }
 `;
 
 const TextThanks = styled(TextConfirm)`
   margin-top: -5px;
   @media (max-width: 768px) {
-    margin-top: 39px;
+    margin-bottom: 7px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 425px) {
+    margin-top: -8px;
+  }
+  @media (max-width: 375px) {
     font-size: 22px;
-    margin-top: 30px;
   }
 `;
 
 const ButtonConfirm = styled(ButtonCheckout)`
-  margin-top: 40px;
+  margin-top: 0;
   @media (max-width: 425px) {
     font-size: 19px;
     width: 200px;
     height: 52px;
     padding: 10px 0 10px;
   }
-  @media (max-width: 320px) {
-    margin-top: 32px;
-  }
 `;
 
 const ButtonThanks = styled(ButtonCheckout)`
-  margin-top: 50px;
-  @media (max-width: 320px) {
-    margin-top: 44px;
+  margin-top: 37px;
+  @media (max-width: 768px) {
+    margin-top: 30px;
   }
 `;
 
@@ -106,32 +190,35 @@ export const OrderConfirm = () => {
   };
 
   return (
-    <Overlay id="confirm" onClick={closeModal}>
+    <>
+      <Overlay id="confirm" onClick={closeModal} />
       <NarrowModal>
-        <OrderTitleConfirm>{authentication.displayName},</OrderTitleConfirm>
-        {orders.length ? (
-          <>
-            <TextConfirm>Пожалуйста, подтвердите заказ!</TextConfirm>
-            <Total>
-              <span>Итого:</span>
-              <TotalPrice>{formatCurrency(total)}</TotalPrice>
-            </Total>
-            <ButtonConfirm
-              onClick={() => {
-                sendOrder(dataBase, orders, authentication);
-                setOrders([]);
-              }}
-            >
-              Подтвердить
-            </ButtonConfirm>
-          </>
-        ) : (
-          <>
-            <TextThanks>Благодарим Вас за заказ!</TextThanks>
-            <ButtonThanks onClick={() => setOpenOrderConfirm(false)}>Закрыть</ButtonThanks>
-          </>
-        )}
+        <Content>
+          <OrderTitleConfirm>{authentication.displayName},</OrderTitleConfirm>
+          {orders.length ? (
+            <>
+              <TextConfirm>Пожалуйста, подтвердите заказ!</TextConfirm>
+              <Total>
+                <span>Итого:</span>
+                <TotalPrice>{formatCurrency(total)}</TotalPrice>
+              </Total>
+              <ButtonConfirm
+                onClick={() => {
+                  sendOrder(dataBase, orders, authentication);
+                  setOrders([]);
+                }}
+              >
+                Подтвердить
+              </ButtonConfirm>
+            </>
+          ) : (
+            <>
+              <TextThanks>Благодарим Вас за заказ!</TextThanks>
+              <ButtonThanks onClick={() => setOpenOrderConfirm(false)}>Закрыть</ButtonThanks>
+            </>
+          )}
+        </Content>
       </NarrowModal>
-    </Overlay>
+    </>
   );
 };
