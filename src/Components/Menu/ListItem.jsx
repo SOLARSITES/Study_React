@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { formatCurrency } from '../Functions/secondaryFunction';
+import { formatCurrency, disableScroll } from '../Functions/secondaryFunction';
 import { Context } from '../Functions/context';
 
 const List = styled.ul`
@@ -82,7 +82,14 @@ export const ListItem = ({ itemList }) => {
   return (
     <List>
       {itemList.map((item) => (
-        <Item key={item.id} img={item.img} onClick={() => setOpenItem(item)}>
+        <Item
+          key={item.id}
+          img={item.img}
+          onClick={() => {
+            setOpenItem(item);
+            disableScroll();
+          }}
+        >
           <p>{item.name}</p>
           <p>{formatCurrency(item.price)}</p>
         </Item>

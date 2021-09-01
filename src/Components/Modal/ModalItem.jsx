@@ -4,7 +4,7 @@ import { Overlay } from '../Styled/ModalStyle';
 import { ButtonCheckout } from '../Styled/ButtonCheckout';
 import { CountItem } from './CountItem';
 import { useCount } from '../Hooks/useCount';
-import { totalPriceItems, formatCurrency } from '../Functions/secondaryFunction';
+import { totalPriceItems, formatCurrency, enableScroll } from '../Functions/secondaryFunction';
 import { Toppings } from './Toppings';
 import { useToppings } from '../Hooks/useToppings';
 import { Choices } from './Choices';
@@ -134,8 +134,9 @@ export const ModalItem = () => {
   };
 
   const closeModal = (e) => {
-    if (e.target.id === 'overlay') {
+    if (e.target.id === 'modal-overlay') {
       setOpenItem(null);
+      enableScroll();
     }
   };
 
@@ -155,7 +156,7 @@ export const ModalItem = () => {
 
   return (
     <>
-      <Overlay id="overlay" onClick={closeModal} />
+      <Overlay id="modal-overlay" onClick={closeModal} />
       <Modal>
         <Banner img={openItem.img} />
         <Content>
@@ -172,7 +173,18 @@ export const ModalItem = () => {
             <span>Цена:</span>
             <span>{formatCurrency(totalPriceItems(order))}</span>
           </TotalPriceItem>
-          <ButtonCheckout onClick={isEdit ? editOrder : addToOrder} disabled={order.choices && !order.choice}>
+          <ButtonCheckout
+            onClick={() => {
+              // isEdit ? editOrder() : addToOrder();
+              if (isEdit) {
+                editOrder();
+              } else {
+                addToOrder();
+              }
+              enableScroll();
+            }}
+            disabled={order.choices && !order.choice}
+          >
             {isEdit ? 'Изменить' : 'Добавить'}
           </ButtonCheckout>
         </Content>

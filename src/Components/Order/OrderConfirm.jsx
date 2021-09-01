@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Overlay, OrderTitle, Total, TotalPrice } from '../Styled/ModalStyle';
 import { ButtonCheckout } from '../Styled/ButtonCheckout';
-import { totalPriceItems, formatCurrency, projection } from '../Functions/secondaryFunction';
+import { totalPriceItems, formatCurrency, projection, enableScroll } from '../Functions/secondaryFunction';
 import { Context } from '../Functions/context';
 
 const NarrowModal = styled.div`
@@ -184,14 +184,15 @@ export const OrderConfirm = () => {
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
 
   const closeModal = (e) => {
-    if (e.target.id === 'confirm') {
+    if (e.target.id === 'confirm-overlay') {
       setOpenOrderConfirm(false);
+      enableScroll();
     }
   };
 
   return (
     <>
-      <Overlay id="confirm" onClick={closeModal} />
+      <Overlay id="confirm-overlay" onClick={closeModal} />
       <NarrowModal>
         <Content>
           <OrderTitleConfirm>{authentication.displayName},</OrderTitleConfirm>
@@ -214,7 +215,14 @@ export const OrderConfirm = () => {
           ) : (
             <>
               <TextThanks>Благодарим Вас за заказ!</TextThanks>
-              <ButtonThanks onClick={() => setOpenOrderConfirm(false)}>Закрыть</ButtonThanks>
+              <ButtonThanks
+                onClick={() => {
+                  setOpenOrderConfirm(false);
+                  enableScroll();
+                }}
+              >
+                Закрыть
+              </ButtonThanks>
             </>
           )}
         </Content>

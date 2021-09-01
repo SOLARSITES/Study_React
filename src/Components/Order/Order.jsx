@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { OrderTitle, Total, TotalPrice } from '../Styled/ModalStyle';
 import { ButtonCheckout } from '../Styled/ButtonCheckout';
 import { OrderListItem } from './OrderListItem';
-import { totalPriceItems, formatCurrency } from '../Functions/secondaryFunction';
+import { totalPriceItems, formatCurrency, disableScroll } from '../Functions/secondaryFunction';
 import { Context } from '../Functions/context';
 
 const OrderStyled = styled.section`
@@ -112,6 +112,7 @@ export const Order = () => {
             onClick={() => {
               if (authentication) {
                 setOpenOrderConfirm(true);
+                disableScroll();
               } else {
                 logIn();
               }

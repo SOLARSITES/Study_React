@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import styled from 'styled-components';
 import trashImg from '../../image/trash.svg';
-import { totalPriceItems, formatCurrency } from '../Functions/secondaryFunction';
+import { totalPriceItems, formatCurrency, disableScroll } from '../Functions/secondaryFunction';
 import { Context } from '../Functions/context';
 
 const OrderItemStyled = styled.li`
@@ -69,7 +69,15 @@ export const OrderListItem = ({ order, index, deleteItem }) => {
   const refDeleteButton = useRef(null);
 
   return (
-    <OrderItemStyled onClick={(e) => e.target !== refDeleteButton.current && setOpenItem({ ...order, index })}>
+    <OrderItemStyled
+      onClick={(e) => {
+        // e.target !== refDeleteButton.current && setOpenItem({ ...order, index });
+        if (e.target !== refDeleteButton.current) {
+          setOpenItem({ ...order, index });
+          disableScroll();
+        }
+      }}
+    >
       <ItemName>{order.name}</ItemName>
       <span>{order.count}</span>
       <ItemPrice>{formatCurrency(totalPriceItems(order))}</ItemPrice>
